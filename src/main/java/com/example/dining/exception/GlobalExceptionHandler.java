@@ -1,6 +1,7 @@
 package com.example.dining.exception;
 
-import com.example.dining.common.Result;
+import com.example.dining.common.model.Result;
+import com.example.dining.common.exception.BusinessException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -9,6 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(BusinessException.class)
+    public Result<Void> handleBusinessException(BusinessException ex) {
+        return Result.failed(ex.getMessage());
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result<Void> handleValidationExceptions(MethodArgumentNotValidException ex) {

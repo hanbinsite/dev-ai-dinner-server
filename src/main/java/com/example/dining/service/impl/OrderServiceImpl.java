@@ -1,7 +1,7 @@
 package com.example.dining.service.impl;
 
 import com.example.dining.common.OrderStatus;
-import com.example.dining.common.util.OrderNoGenerator;
+import com.example.dining.util.OrderNoGenerator;
 import com.example.dining.entity.Order;
 import com.example.dining.entity.OrderItem;
 import com.example.dining.mapper.OrderItemMapper;
