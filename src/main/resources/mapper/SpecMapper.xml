@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dining.mapper.SpecMapper">
+    <resultMap id="BaseResultMap" type="com.example.dining.entity.Spec">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name
+    </sql>
+
+    <insert id="insert" parameterType="com.example.dining.entity.Spec">
+        INSERT INTO spec (id, name)
+        VALUES (#{id}, #{name})
+    </insert>
+
+    <update id="update" parameterType="com.example.dining.entity.Spec">
+        UPDATE spec
+        SET name = #{name}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM spec WHERE id = #{id}
+    </delete>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM spec
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM spec
+    </select>
+
+    <select id="selectByItemId" resultMap="BaseResultMap">
+        SELECT s.*
+        FROM spec s
+        INNER JOIN item_spec isp ON s.id = isp.spec_id
+        WHERE isp.item_id = #{itemId}
+    </select>
+</mapper> 

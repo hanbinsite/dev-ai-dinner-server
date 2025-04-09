@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dining.mapper.ItemSpecMapper">
+    <resultMap id="BaseResultMap" type="com.example.dining.entity.ItemSpec">
+        <id column="id" property="id"/>
+        <result column="item_id" property="itemId"/>
+        <result column="spec_id" property="specId"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, item_id, spec_id
+    </sql>
+
+    <insert id="insert" parameterType="com.example.dining.entity.ItemSpec">
+        INSERT INTO item_spec (id, item_id, spec_id)
+        VALUES (#{id}, #{itemId}, #{specId})
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM item_spec WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteByItemId">
+        DELETE FROM item_spec WHERE item_id = #{itemId}
+    </delete>
+
+    <delete id="deleteBySpecId">
+        DELETE FROM item_spec WHERE spec_id = #{specId}
+    </delete>
+
+    <select id="selectByItemId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM item_spec
+        WHERE item_id = #{itemId}
+    </select>
+
+    <select id="selectBySpecId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM item_spec
+        WHERE spec_id = #{specId}
+    </select>
+</mapper> 
