@@ -1,6 +1,7 @@
 package com.example.dining.service.impl;
 
 import com.example.dining.common.OrderStatus;
+import com.example.dining.common.util.OrderNoGenerator;
 import com.example.dining.entity.Order;
 import com.example.dining.entity.OrderItem;
 import com.example.dining.mapper.OrderItemMapper;
@@ -9,8 +10,6 @@ import com.example.dining.service.OrderService;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.UUID;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -26,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
     public Mono<Order> createOrder(Order order) {
         return Mono.fromRunnable(() -> {
             // 生成订单号
-            String orderNo = generateOrderNo();
+            String orderNo = OrderNoGenerator.generateOrderNo();
             order.setOrderNo(orderNo);
             order.setStatus(OrderStatus.ORDERED.getCode()); // 设置初始状态为已下单
             
@@ -90,9 +89,5 @@ public class OrderServiceImpl implements OrderService {
                     order.setOrderItems(orderItemMapper.findByOrderId(order.getId()));
                     return Mono.just(order);
                 });
-    }
-
-    private String generateOrderNo() {
-        return System.currentTimeMillis() + UUID.randomUUID().toString().substring(0, 8);
     }
 } 

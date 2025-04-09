@@ -1,7 +1,7 @@
 -- 创建订单表
 CREATE TABLE IF NOT EXISTS `order` (
     `id` BIGINT NOT NULL AUTO_INCREMENT COMMENT '主键ID',
-    `order_no` VARCHAR(32) NOT NULL COMMENT '订单编号',
+    `order_no` VARCHAR(32) NOT NULL COMMENT '订单编号(32位)',
     `user_id` VARCHAR(32) NOT NULL COMMENT '用户ID',
     `table_no` VARCHAR(32) NOT NULL COMMENT '桌号',
     `total_amount` DECIMAL(10,2) NOT NULL COMMENT '订单总金额',
