@@ -10,6 +10,26 @@ import java.util.List;
 import java.util.Map;
 
 public interface ItemService {
+    /**
+     * 查询所有商品
+     */
+    Flux<Item> findAll();
+
+    /**
+     * 根据分类ID查询商品
+     */
+    Flux<Item> findByCategoryId(String categoryId);
+
+    /**
+     * 根据ID查询商品
+     */
+    Mono<Item> findById(String id);
+
+    /**
+     * 搜索商品
+     */
+    Flux<Item> searchItems(String keyword);
+
     // 新增商品
     void addItem(Item item);
     
@@ -19,14 +39,8 @@ public interface ItemService {
     // 删除商品
     void deleteItem(String id);
     
-    // 根据ID查询商品
-    Item getItemById(String id);
-    
     // 查询所有商品
     List<Item> getAllItems();
-    
-    // 根据分类ID查询商品
-    List<Item> getItemsByCategoryId(String categoryId);
     
     // 查询热门商品
     List<Item> getHotItems();
