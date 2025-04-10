@@ -8,14 +8,13 @@ import java.util.List;
 @Data
 public class Order {
     private Long id;
-    private String orderNo;        // 订单编号
+    private String orderNo;        // 订单号
     private String userId;         // 用户ID
     private String tableNo;        // 桌号
-    private BigDecimal totalAmount;// 订单总金额
-    private Integer status;        // 订单状态：0-已下单 1-已支付 2-已完成
+    private BigDecimal totalAmount; // 总金额
+    private Integer status;        // 状态：0-待支付，1-已支付，2-已取消
     private String remark;         // 备注
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
-    
-    private List<OrderItem> orderItems; // 订单项列表
+    private List<OrderItem> orderItems; // 订单项
 } 
