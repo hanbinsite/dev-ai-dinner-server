@@ -48,3 +48,6 @@ dump.rdb
 # Logs
 logs/
 *.log 
+
+
+application-dev.yml

@@ -1,0 +1,506 @@
+{
+  "version": "1.0.0",
+  "title": "管理员与权限管理API文档",
+  "description": "提供管理员账号和权限管理的相关接口",
+  "baseUrl": "/api/admin",
+  "apis": [
+    {
+      "group": "管理员管理",
+      "endpoints": [
+        {
+          "name": "创建管理员",
+          "method": "POST",
+          "path": "/admins",
+          "description": "创建新的管理员账号",
+          "request": {
+            "contentType": "application/json",
+            "body": {
+              "username": "string, 用户名",
+              "password": "string, 密码",
+              "role": "string, 角色",
+              "remark": "string, 备注"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 管理员ID",
+              "username": "string, 用户名",
+              "role": "string, 角色",
+              "status": "string, 状态",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        },
+        {
+          "name": "修改管理员信息",
+          "method": "PUT",
+          "path": "/admins/{id}",
+          "description": "修改管理员信息",
+          "request": {
+            "contentType": "application/json",
+            "pathParams": {
+              "id": "number, 管理员ID"
+            },
+            "body": {
+              "username": "string, 用户名",
+              "role": "string, 角色",
+              "remark": "string, 备注"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 管理员ID",
+              "username": "string, 用户名",
+              "role": "string, 角色",
+              "status": "string, 状态",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        },
+        {
+          "name": "修改密码",
+          "method": "PUT",
+          "path": "/admins/{id}/password",
+          "description": "修改管理员密码",
+          "request": {
+            "contentType": "application/json",
+            "pathParams": {
+              "id": "number, 管理员ID"
+            },
+            "body": {
+              "oldPassword": "string, 原密码",
+              "newPassword": "string, 新密码"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "密码修改成功"
+          }
+        },
+        {
+          "name": "删除管理员",
+          "method": "DELETE",
+          "path": "/admins/{id}",
+          "description": "删除管理员账号",
+          "request": {
+            "pathParams": {
+              "id": "number, 管理员ID"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "删除成功"
+          }
+        },
+        {
+          "name": "获取管理员列表",
+          "method": "GET",
+          "path": "/admins",
+          "description": "获取所有管理员列表",
+          "response": {
+            "contentType": "application/json",
+            "body": [
+              {
+                "id": "number, 管理员ID",
+                "username": "string, 用户名",
+                "role": "string, 角色",
+                "status": "string, 状态",
+                "remark": "string, 备注",
+                "createTime": "string, 创建时间",
+                "updateTime": "string, 更新时间"
+              }
+            ]
+          }
+        },
+        {
+          "name": "获取管理员详情",
+          "method": "GET",
+          "path": "/admins/{id}",
+          "description": "获取管理员详细信息",
+          "request": {
+            "pathParams": {
+              "id": "number, 管理员ID"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 管理员ID",
+              "username": "string, 用户名",
+              "role": "string, 角色",
+              "status": "string, 状态",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "group": "角色管理",
+      "endpoints": [
+        {
+          "name": "创建角色",
+          "method": "POST",
+          "path": "/roles",
+          "description": "创建新的角色",
+          "request": {
+            "contentType": "application/json",
+            "body": {
+              "name": "string, 角色名称",
+              "code": "string, 角色编码",
+              "remark": "string, 备注"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 角色ID",
+              "name": "string, 角色名称",
+              "code": "string, 角色编码",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        },
+        {
+          "name": "修改角色",
+          "method": "PUT",
+          "path": "/roles/{id}",
+          "description": "修改角色信息",
+          "request": {
+            "contentType": "application/json",
+            "pathParams": {
+              "id": "number, 角色ID"
+            },
+            "body": {
+              "name": "string, 角色名称",
+              "code": "string, 角色编码",
+              "remark": "string, 备注"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 角色ID",
+              "name": "string, 角色名称",
+              "code": "string, 角色编码",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        },
+        {
+          "name": "删除角色",
+          "method": "DELETE",
+          "path": "/roles/{id}",
+          "description": "删除角色",
+          "request": {
+            "pathParams": {
+              "id": "number, 角色ID"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "删除成功"
+          }
+        },
+        {
+          "name": "获取角色列表",
+          "method": "GET",
+          "path": "/roles",
+          "description": "获取所有角色列表",
+          "response": {
+            "contentType": "application/json",
+            "body": [
+              {
+                "id": "number, 角色ID",
+                "name": "string, 角色名称",
+                "code": "string, 角色编码",
+                "remark": "string, 备注",
+                "createTime": "string, 创建时间",
+                "updateTime": "string, 更新时间"
+              }
+            ]
+          }
+        },
+        {
+          "name": "获取角色详情",
+          "method": "GET",
+          "path": "/roles/{id}",
+          "description": "获取角色详细信息",
+          "request": {
+            "pathParams": {
+              "id": "number, 角色ID"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 角色ID",
+              "name": "string, 角色名称",
+              "code": "string, 角色编码",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "group": "权限管理",
+      "endpoints": [
+        {
+          "name": "创建权限",
+          "method": "POST",
+          "path": "/permissions",
+          "description": "创建新的权限",
+          "request": {
+            "contentType": "application/json",
+            "body": {
+              "name": "string, 权限名称",
+              "code": "string, 权限编码",
+              "type": "string, 权限类型",
+              "remark": "string, 备注"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 权限ID",
+              "name": "string, 权限名称",
+              "code": "string, 权限编码",
+              "type": "string, 权限类型",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        },
+        {
+          "name": "修改权限",
+          "method": "PUT",
+          "path": "/permissions/{id}",
+          "description": "修改权限信息",
+          "request": {
+            "contentType": "application/json",
+            "pathParams": {
+              "id": "number, 权限ID"
+            },
+            "body": {
+              "name": "string, 权限名称",
+              "code": "string, 权限编码",
+              "type": "string, 权限类型",
+              "remark": "string, 备注"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 权限ID",
+              "name": "string, 权限名称",
+              "code": "string, 权限编码",
+              "type": "string, 权限类型",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        },
+        {
+          "name": "删除权限",
+          "method": "DELETE",
+          "path": "/permissions/{id}",
+          "description": "删除权限",
+          "request": {
+            "pathParams": {
+              "id": "number, 权限ID"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "删除成功"
+          }
+        },
+        {
+          "name": "获取权限列表",
+          "method": "GET",
+          "path": "/permissions",
+          "description": "获取所有权限列表",
+          "response": {
+            "contentType": "application/json",
+            "body": [
+              {
+                "id": "number, 权限ID",
+                "name": "string, 权限名称",
+                "code": "string, 权限编码",
+                "type": "string, 权限类型",
+                "remark": "string, 备注",
+                "createTime": "string, 创建时间",
+                "updateTime": "string, 更新时间"
+              }
+            ]
+          }
+        },
+        {
+          "name": "获取权限详情",
+          "method": "GET",
+          "path": "/permissions/{id}",
+          "description": "获取权限详细信息",
+          "request": {
+            "pathParams": {
+              "id": "number, 权限ID"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": {
+              "id": "number, 权限ID",
+              "name": "string, 权限名称",
+              "code": "string, 权限编码",
+              "type": "string, 权限类型",
+              "remark": "string, 备注",
+              "createTime": "string, 创建时间",
+              "updateTime": "string, 更新时间"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "group": "角色权限关联",
+      "endpoints": [
+        {
+          "name": "为角色分配权限",
+          "method": "POST",
+          "path": "/roles/{roleId}/permissions",
+          "description": "为角色分配权限",
+          "request": {
+            "contentType": "application/json",
+            "pathParams": {
+              "roleId": "number, 角色ID"
+            },
+            "body": {
+              "permissionIds": "array, 权限ID列表"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "分配成功"
+          }
+        },
+        {
+          "name": "移除角色的权限",
+          "method": "DELETE",
+          "path": "/roles/{roleId}/permissions/{permissionId}",
+          "description": "移除角色的权限",
+          "request": {
+            "pathParams": {
+              "roleId": "number, 角色ID",
+              "permissionId": "number, 权限ID"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "移除成功"
+          }
+        },
+        {
+          "name": "获取角色的权限列表",
+          "method": "GET",
+          "path": "/roles/{roleId}/permissions",
+          "description": "获取角色拥有的权限列表",
+          "request": {
+            "pathParams": {
+              "roleId": "number, 角色ID"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": [
+              {
+                "id": "number, 权限ID",
+                "name": "string, 权限名称",
+                "code": "string, 权限编码",
+                "type": "string, 权限类型",
+                "remark": "string, 备注"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "group": "管理员角色关联",
+      "endpoints": [
+        {
+          "name": "为管理员分配角色",
+          "method": "POST",
+          "path": "/admins/{adminId}/roles",
+          "description": "为管理员分配角色",
+          "request": {
+            "contentType": "application/json",
+            "pathParams": {
+              "adminId": "number, 管理员ID"
+            },
+            "body": {
+              "roleIds": "array, 角色ID列表"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "分配成功"
+          }
+        },
+        {
+          "name": "移除管理员的角色",
+          "method": "DELETE",
+          "path": "/admins/{adminId}/roles/{roleId}",
+          "description": "移除管理员的角色",
+          "request": {
+            "pathParams": {
+              "adminId": "number, 管理员ID",
+              "roleId": "number, 角色ID"
+            }
+          },
+          "response": {
+            "status": 204,
+            "description": "移除成功"
+          }
+        },
+        {
+          "name": "获取管理员的角色列表",
+          "method": "GET",
+          "path": "/admins/{adminId}/roles",
+          "description": "获取管理员拥有的角色列表",
+          "request": {
+            "pathParams": {
+              "adminId": "number, 管理员ID"
+            }
+          },
+          "response": {
+            "contentType": "application/json",
+            "body": [
+              {
+                "id": "number, 角色ID",
+                "name": "string, 角色名称",
+                "code": "string, 角色编码",
+                "remark": "string, 备注"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+} 

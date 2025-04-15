@@ -1,6 +1,6 @@
 package com.example.dining.exception;
 
-import com.example.dining.common.model.Result;
+import com.example.dining.common.Result;
 import com.example.dining.common.exception.BusinessException;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;

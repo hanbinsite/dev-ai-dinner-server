@@ -1,9 +1,9 @@
 package com.example.dining.dto;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -23,4 +23,10 @@ public class ItemSpecDTO {
 
     private Integer status = 1;        // 状态：0-下架 1-上架
     private String remark;             // 备注
+
+    @NotEmpty(message = "规格名称不能为空")
+    private String name;
+    
+    @NotEmpty(message = "规格值不能为空")
+    private String value;
 } 

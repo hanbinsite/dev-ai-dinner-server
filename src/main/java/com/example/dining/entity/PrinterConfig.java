@@ -10,7 +10,8 @@ public class PrinterConfig {
     private String type;           // 打印机类型（FEIE, YLY等）
     private String sn;             // 打印机编号
     private String key;            // 打印机密钥
-    private String config;         // 打印机配置（JSON格式）
+    private String user;           // 用户名
+    private String ukey;           // 用户密钥
     private Integer status;        // 状态：0-禁用，1-启用
     private String remark;         // 备注
     private LocalDateTime createTime;
